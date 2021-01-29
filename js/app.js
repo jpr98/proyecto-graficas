@@ -16,161 +16,27 @@ window.addEventListener('resize', () => {
 // controls
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-// create shape
-var geometry = new THREE.BoxGeometry(10, 0, 10);
-var geoB1 = new THREE.BoxGeometry(1, 2, 1);
-var geoB2 = new THREE.BoxGeometry(1, 3, 1);
-var geoB3 = new THREE.BoxGeometry(1, 1, 1);
+// create shapes
+var mainGeometry = new THREE.BoxGeometry(18.1, 0.1, 10.2);
+var parkGemoetry = new THREE.BoxGeometry(5.2, 0.1, 7.2);
 
-
-// create material or color texture
+// create materials or color textures
 var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
-var materialB = new THREE.MeshBasicMaterial({color: 0xBEBEBE, wireframe:false});
-var materialB2 = new THREE.MeshBasicMaterial({color: 0xA52A2A, wireframe:false});
-
+var materialParkGround = new THREE.MeshBasicMaterial({color: 0x046e02, wireframe: false});
 
 // Objects
-var cube = new THREE.Mesh(geometry, material);
+var plane = new THREE.Mesh(mainGeometry, material);
+scene.add(plane);
 
+var parkPlane = new THREE.Mesh(parkGemoetry, materialParkGround);
+parkPlane.position.y = 0.1
+scene.add(parkPlane);
 
-scene.add(cube);
+generateBuildings(scene);
+generateTrees(scene);
 
-// Front row buildings
-var x_pos = -4.5;
-while(x_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+=x_pos;
-		B.position.z+=4.3;
-		x_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+=x_pos;
-		B.position.z+=4.3;
-		x_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-
-// Back row buildings
-x_pos = -4.5;
-while(x_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+=x_pos;
-		B.position.z+=-4.3;
-		x_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+=x_pos;
-		B.position.z+=-4.3;
-		x_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-// Left side buildings
-var z_pos = -3.5;
-while(z_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+= -4.5;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+= -4.5;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-
-// Right side buildings
-var z_pos = -3.5;
-while(z_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+= 4.5;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+= 4.5;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-
-// Right side buildings inside
-var z_pos = -3.5;
-while(z_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+= 3;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+= 3;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-// Left side buildings inside
-var z_pos = -3.5;
-while(z_pos < 5){
-	var c = Math.floor((Math.random() * 3));
-	if(c == 0){
-		B = new THREE.Mesh(geoB1, materialB);
-		B.position.y+=1;
-		B.position.x+= -3;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-	else {
-		B = new THREE.Mesh(geoB2, materialB2);
-		B.position.y+=1.5;
-		B.position.x+= -3;
-		B.position.z+=z_pos;
-		z_pos += 1.3;
-		scene.add(B);
-	}
-}
-
-camera.position.z = 4;
+camera.position.z = 14;
+camera.position.y = 3.5;
 
 // logic
 var update = function() {
