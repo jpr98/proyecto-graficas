@@ -5,20 +5,42 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+window.addEventListener('resize', () => {
+	var width = window.innerWidth;
+	var height  = window.innerHeight;
+	renderer.setSize(width, height);
+	camera.aspect = width / height;
+	camera.updateProjectionMatrix();
+})
+
+// controls
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+// create shape
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+// create material or color texture
+var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
-camera.position.z = 5;
+camera.position.z = 4;
 
-const animate = function () {
-	requestAnimationFrame(animate);
+// logic
+var update = function() {
+	
+};
 
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
-
+// draw scene
+var render = function() {
 	renderer.render(scene, camera);
 };
 
-animate();
+// update, render, repeat
+var GameLoop = function() {
+	requestAnimationFrame(GameLoop);
+	update();
+	render();
+};
+
+GameLoop();
