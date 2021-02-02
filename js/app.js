@@ -21,7 +21,7 @@ var mainGeometry = new THREE.BoxGeometry(18.1, 0.1, 10.2);
 var parkGemoetry = new THREE.BoxGeometry(5.2, 0.1, 7.2);
 
 // create materials or color textures
-var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+var material = new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load( 'textures/concrete.png' )});
 var materialParkGround = new THREE.MeshBasicMaterial({color: 0x046e02, wireframe: false});
 
 // Objects
