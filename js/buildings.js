@@ -1,3 +1,5 @@
+// Module responsible for the generation and population of buildings
+
 // Geometry
 var geoB1 = new THREE.BoxGeometry(1, 2, 1);
 var geoB2 = new THREE.BoxGeometry(1, 2.5, 1);
@@ -58,11 +60,13 @@ const Z_LIMIT_BACK = -4.4;
 const Z_START_MIDDLE = -3.1;
 const Z_STOP_MIDDLE = 3.5;
 
-// Creates each building object
+// Creates and returns one building object with random attributes
 var createBMesh = function (x, z) {
     var y, geo, material;
     var rotation = 0;
     var c = Math.floor((Math.random() * 4));
+
+    // Creates attributes based on random number
     if (c == 0) {
         y = 1;
         geo = geoB1;
@@ -95,6 +99,7 @@ var createBMesh = function (x, z) {
         }
     }
 
+    // Creates building object and designates position, rotation and scale
     B = new THREE.Mesh(geo, material);
     B.position.x += x;
     B.position.y += y;

@@ -1,3 +1,5 @@
+// Main module responsible for setting up the scene
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -13,14 +15,14 @@ window.addEventListener('resize', () => {
 	camera.updateProjectionMatrix();
 })
 
-// controls
+// Controls
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-// create shapes
+// Create shapes
 var mainGeometry = new THREE.BoxGeometry(18.1, 0.1, 10.2);
 var parkGemoetry = new THREE.BoxGeometry(5.2, 0.1, 7.2);
 
-// create materials or color textures
+// Create materials or color textures
 var material = new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load( 'textures/concrete.png' )});
 var materialParkGround = new THREE.MeshBasicMaterial({color: 0x046e02, wireframe: false});
 
@@ -38,17 +40,17 @@ generateTrees(scene);
 camera.position.z = 14;
 camera.position.y = 3.5;
 
-// logic
+// Logic
 var update = function() {
 	
 };
 
-// draw scene
+// Draw scene
 var render = function() {
 	renderer.render(scene, camera);
 };
 
-// update, render, repeat
+// Update, render, repeat
 var GameLoop = function() {
 	requestAnimationFrame(GameLoop);
 	update();
