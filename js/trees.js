@@ -1,14 +1,22 @@
+// Module responsible for the generation and population of trees
 // Inspiration and base code taken from https://codepen.io/leomanlapera/pen/EWBZLW
+
+// Shapes (Geometry of the cube)
 var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+// Materials
 var logMaterial = new THREE.MeshPhongMaterial({color: 0x7D5A4F});
 var leaveDarkMaterial = new THREE.MeshPhongMaterial({color: 0x91E56E});
 var leaveLightMaterial = new THREE.MeshPhongMaterial({color: 0xA2FF7A});
 
+// Ceates and returns one tree
 var createTree = function () {
+    // Creates log
     var log = new THREE.Mesh(geometry, logMaterial);
     log.position.set(0, 0, 0);
     log.scale.set(0.3, 1.5, 0.3);
 
+    // Creates leaves
     var squareLeave01 = new THREE.Mesh(geometry, leaveDarkMaterial);
     squareLeave01.position.set(0.5, 1.1, 0.5);
     squareLeave01.scale.set(0.6, 0.6, 0.6);
@@ -29,6 +37,7 @@ var createTree = function () {
     leaveLight.position.set(0, 1.2, 0);
     leaveLight.scale.set(1.1, 0.5, 1.1);
 
+    // Forms tree
     tree = new THREE.Group();
     tree.add(leaveDark);
     tree.add(leaveLight);
@@ -40,9 +49,12 @@ var createTree = function () {
     return tree
 }
 
+// Returns a random number between 0 and the limit
 var rand = function(limit) {
     return Math.random() * limit;
 }
+
+// Generates trees inside the park area
 var generateTrees = function(scene) {
     var x_pos = -2.2;
     while (x_pos < 2.4) {
