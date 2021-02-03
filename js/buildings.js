@@ -17,39 +17,39 @@ const textureRoof4 = new THREE.TextureLoader().load( 'textures/roof4.jpg' );
 // Materials
 const materialB = 
 [
-    new THREE.MeshBasicMaterial({ map: textureBSide }), // right side
-    new THREE.MeshBasicMaterial({ map: textureBSide }), // left side
-    new THREE.MeshBasicMaterial({ map: textureRoof }), // top side
-    new THREE.MeshBasicMaterial({ map: textureRoof }), // bottom side
-    new THREE.MeshBasicMaterial({ map: textureBSide }), // front side
-    new THREE.MeshBasicMaterial({ map: textureBSide }), // back side
+    new THREE.MeshPhongMaterial({ map: textureBSide }), // right side
+    new THREE.MeshPhongMaterial({ map: textureBSide }), // left side
+    new THREE.MeshPhongMaterial({ map: textureRoof }), // top side
+    new THREE.MeshPhongMaterial({ map: textureRoof }), // bottom side
+    new THREE.MeshPhongMaterial({ map: textureBSide }), // front side
+    new THREE.MeshPhongMaterial({ map: textureBSide }), // back side
 ];
 const materialB2 = 
 [
-    new THREE.MeshBasicMaterial({ map: textureB2Side }), // right side
-    new THREE.MeshBasicMaterial({ map: textureB2Side }), // left side
-    new THREE.MeshBasicMaterial({ map: textureRoof2 }), // top side
-    new THREE.MeshBasicMaterial({ map: textureRoof2 }), // bottom side
-    new THREE.MeshBasicMaterial({ map: textureB2Side }), // front side
-    new THREE.MeshBasicMaterial({ map: textureB2Side }), // back side
+    new THREE.MeshPhongMaterial({ map: textureB2Side }), // right side
+    new THREE.MeshPhongMaterial({ map: textureB2Side }), // left side
+    new THREE.MeshPhongMaterial({ map: textureRoof2 }), // top side
+    new THREE.MeshPhongMaterial({ map: textureRoof2 }), // bottom side
+    new THREE.MeshPhongMaterial({ map: textureB2Side }), // front side
+    new THREE.MeshPhongMaterial({ map: textureB2Side }), // back side
 ];
 const materialB3 = 
 [
-    new THREE.MeshBasicMaterial({ map: textureB3Side }), // right side
-    new THREE.MeshBasicMaterial({ map: textureB3Side }), // left side
-    new THREE.MeshBasicMaterial({ map: textureRoof3 }), // top side
-    new THREE.MeshBasicMaterial({ map: textureRoof3 }), // bottom side
-    new THREE.MeshBasicMaterial({ map: textureB3Side }), // front side
-    new THREE.MeshBasicMaterial({ map: textureB3Side }), // back side
+    new THREE.MeshPhongMaterial({ map: textureB3Side }), // right side
+    new THREE.MeshPhongMaterial({ map: textureB3Side }), // left side
+    new THREE.MeshPhongMaterial({ map: textureRoof3 }), // top side
+    new THREE.MeshPhongMaterial({ map: textureRoof3 }), // bottom side
+    new THREE.MeshPhongMaterial({ map: textureB3Side }), // front side
+    new THREE.MeshPhongMaterial({ map: textureB3Side }), // back side
 ];
 const materialB4 = 
 [
-    new THREE.MeshBasicMaterial({ map: textureB4Side }), // right side
-    new THREE.MeshBasicMaterial({ map: textureB4Side }), // left side
-    new THREE.MeshBasicMaterial({ map: textureRoof4 }), // top side
-    new THREE.MeshBasicMaterial({ map: textureRoof4 }), // bottom side
-    new THREE.MeshBasicMaterial({ map: textureB4Side }), // front side
-    new THREE.MeshBasicMaterial({ map: textureB4Side }), // back side
+    new THREE.MeshPhongMaterial({ map: textureB4Side }), // right side
+    new THREE.MeshPhongMaterial({ map: textureB4Side }), // left side
+    new THREE.MeshPhongMaterial({ map: textureRoof4 }), // top side
+    new THREE.MeshPhongMaterial({ map: textureRoof4 }), // bottom side
+    new THREE.MeshPhongMaterial({ map: textureB4Side }), // front side
+    new THREE.MeshPhongMaterial({ map: textureB4Side }), // back side
 ];
 
 // Constants
@@ -102,7 +102,6 @@ var createBMesh = function (x, z) {
     var r = Math.floor(Math.random() * 4);
     rotation = r * 90;
     B.rotation.y = rotation;
-    console.log("Rotation", B.rotation.y);
 
     if (Math.floor(Math.random() * 2) == 0) {
         var change = Math.random() * 0.8;

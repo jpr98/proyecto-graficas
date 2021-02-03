@@ -1,8 +1,8 @@
 // Inspiration and base code taken from https://codepen.io/leomanlapera/pen/EWBZLW
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var logMaterial = new THREE.MeshBasicMaterial({color: 0x7D5A4F});
-var leaveDarkMaterial = new THREE.MeshBasicMaterial({color: 0x91E56E});
-var leaveLightMaterial = new THREE.MeshBasicMaterial({color: 0xA2FF7A});
+var logMaterial = new THREE.MeshPhongMaterial({color: 0x7D5A4F});
+var leaveDarkMaterial = new THREE.MeshPhongMaterial({color: 0x91E56E});
+var leaveLightMaterial = new THREE.MeshPhongMaterial({color: 0xA2FF7A});
 
 var createTree = function () {
     var log = new THREE.Mesh(geometry, logMaterial);
